@@ -1,57 +1,62 @@
-# 🌿 Fast Fashion Alternative Finder
+# Fast Fashion Alternative Finder 🌿
 
-## 🧵 Project Overview
-
-**Fast Fashion Alternative Finder** एक सिंपल वेब ऐप है जो यूज़र्स को कपड़ों के लिए इको-फ्रेंडली (eco-friendly) विकल्प ढूंढने में मदद करता है।
-
-यूज़र किसी भी कपड़े का नाम टाइप करता है — जैसे `jeans`, `kurta`, `baby dress`, `bra` — और यह ऐप लोकल **Thrift Stores**, **Repair Shops**, और **Ethical Brands** सजेस्ट करता है जो वो आइटम ऑफर करते हैं।
+This is a simple web page that helps you find eco-friendly and sustainable clothing alternatives to fast fashion.
 
 ---
 
-## 💡 Features
+## Features
 
-- 🔎 Input box में कोई भी कपड़ा टाइप करें (men, women, kids सभी के लिए)
-- 🏪 10+ hardcoded eco-friendly places (Thrift, Repair, Brands)
-- 📍 हर जगह का नाम, टाइप, लोकेशन और वेबसाइट लिंक दिखता है
-- 📱 Fully responsive — मोबाइल पर भी आसानी से चलता है
-- 🧒👕👗 सभी उम्र और जेंडर के कपड़े शामिल (e.g. baby dress, saree, boys jacket, etc.)
-
----
-
-## 🛠️ Technologies Used
-
-- **HTML5** – पेज की structure के लिए  
-- **CSS3** – styling और responsiveness के लिए  
-- **JavaScript** – यूज़र इनपुट, data filtering और display logic
+- Search for any clothing item like jeans, kurta, jacket, bra, baby dress, shirt, pant, etc.
+- Displays store name, store type (e.g., thrift store, ethical brand), location, and price for the item.
+- Embedded Google Maps iframe to show the exact location of each store.
+- Two buttons available:
+  - **Buy Now:** For immediate purchase (shows an alert).
+  - **Buy Later:** For later purchase (shows an alert; can be customized for wishlist functionality).
+- Responsive design that works well on both mobile and desktop.
+- UI is fully in English.
 
 ---
 
-## 🚀 How to Run in VS Code
+## Usage
 
-1. **VS Code खोलें**  
-2. एक नया फ़ोल्डर बनाएं और उसमें एक फाइल बनाएं: `index.html`  
-3. ऊपर दिया गया पूरा कोड `index.html` में **paste** करें  
-4. फाइल पर राइट क्लिक करें → **"Open with Live Server"** (या फाइल को डबल क्लिक करके ब्राउज़र में खोलें)  
-5. सर्च बॉक्स में कोई कपड़ा टाइप करें — जैसे `kurta`, `hoodie`, `baby dress` — और आपको eco-friendly options दिखेंगे।
-
----
-
-## 🔮 Future Improvements (Optional)
-
-- 🔄 Real-time data fetch from online APIs
-- 📍 Nearby store detection using GPS
-- ✍️ User reviews & rating system
-- 👚 Add images or thumbnails for suggestions
+1. Open the web page in any modern browser (Chrome, Firefox, Edge).
+2. Enter the desired clothing item in the search box (e.g., jeans, kurta, shirt, pant, baby dress, etc.).
+3. Click the **Find Alternatives** button.
+4. Eco-friendly stores and their prices will be displayed below.
+5. View the store location using the embedded Google Map.
+6. Click the “Buy Now” or “Buy Later” buttons to take action.
 
 ---
 
-## 👤 Author
+## Customization
 
-**MD REYAZUDDIN ANSARI**  
-📧 reyazuddin05.03@gmail.com
+- Edit the `alternatives` array inside the script tag to add or modify stores and items.
+- Update the Google Maps URLs in the `locationMaps` object as needed.
+- Replace the alert functions in “Buy Now” and “Buy Later” with actual shopping cart or wishlist features.
 
 ---
 
-## 📜 License
+## Technologies Used
 
-This project is open-source and free to use under the **MIT License**.
+- HTML5, CSS3
+- Vanilla JavaScript
+- Google Maps Embedded Iframe
+
+---
+
+## Future Improvements
+
+- Add store filters (by type or location).
+- Integrate with real e-commerce platforms.
+- Add user login and wishlist functionality.
+- Add more items and stores.
+
+---
+
+## License
+
+This project is open-source and can be customized as per your needs.
+
+---
+
+**Created with ❤️ by MD REYAZUDDIN ANSARI**
