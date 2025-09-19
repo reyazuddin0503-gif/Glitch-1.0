@@ -12,7 +12,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       text-align: center;
     }
@@ -70,51 +70,74 @@
 <body>
   <div class="container">
     <h1>🌿 Fast Fashion Alternative Finder</h1>
-    <p>Enter a clothing item to find eco-friendly alternatives near you!</p>
-    <input type="text" id="itemInput" placeholder="E.g. jeans, jacket, t-shirt" />
+    <p>Enter any clothing item (e.g. jeans, kurta, hoodie, baby dress, bra) to find eco-friendly alternatives!</p>
+    <input type="text" id="itemInput" placeholder="E.g. jeans, kurta, jacket, bra, baby dress..." />
     <button onclick="searchAlternatives()">Find Alternatives</button>
 
     <div id="results"></div>
   </div>
 
   <script>
-    // Hardcoded list of eco-friendly alternatives
     const alternatives = [
       {
         name: "Green Threads Thrift",
         type: "Thrift Store",
         location: "Downtown",
-        items: ["jeans", "jackets", "shirts"]
+        items: ["jeans", "jackets", "shirts", "t-shirts", "hoodies", "skirts", "kurta", "baby dress", "school uniform"]
       },
       {
         name: "Fix It Up Tailoring",
         type: "Repair Shop",
         location: "Campus Plaza",
-        items: ["jeans", "coats", "dresses"]
+        items: ["jeans", "coats", "dresses", "blouses", "pants", "blazers", "saree", "kids shorts"]
       },
       {
         name: "EverEthical",
         type: "Ethical Brand",
         website: "https://everethical.com",
-        items: ["t-shirts", "jeans", "hoodies"]
+        items: ["t-shirts", "jeans", "hoodies", "sweaters", "socks", "caps", "underwear", "bra", "jumpsuit", "salwar"]
       },
       {
         name: "EcoCloset",
         type: "Thrift Store",
         location: "East Side",
-        items: ["dresses", "skirts", "jackets"]
-      },
-      {
-        name: "Sew & Save",
-        type: "Repair Shop",
-        location: "Main Street",
-        items: ["pants", "coats", "shirts"]
+        items: ["dresses", "skirts", "jackets", "tops", "saree", "kurta", "bra", "leggings", "frock"]
       },
       {
         name: "Organic Outfitters",
         type: "Ethical Brand",
         website: "https://organicoutfitters.com",
-        items: ["jeans", "t-shirts", "jackets"]
+        items: ["jeans", "t-shirts", "jackets", "trousers", "kurta", "salwar", "innerwear", "baby romper"]
+      },
+      {
+        name: "Little Earthlings",
+        type: "Ethical Brand",
+        website: "https://littleearthlings.org",
+        items: ["baby dress", "baby romper", "baby socks", "baby hoodie", "mittens", "caps"]
+      },
+      {
+        name: "Patch & Wear",
+        type: "Repair Shop",
+        location: "Green Street",
+        items: ["shirts", "t-shirts", "hoodies", "blazers", "kurta", "innerwear", "uniform"]
+      },
+      {
+        name: "NaturWear",
+        type: "Ethical Brand",
+        website: "https://naturwear.org",
+        items: ["dresses", "tops", "pants", "skirts", "sweaters", "underwear", "bra", "caps", "socks"]
+      },
+      {
+        name: "ReLove Boutique",
+        type: "Thrift Store",
+        location: "South Lane",
+        items: ["jeans", "blouses", "dresses", "jackets", "saree", "kurta", "scarf", "boys jacket", "girls top"]
+      },
+      {
+        name: "EcoFix Center",
+        type: "Repair Shop",
+        location: "College Road",
+        items: ["t-shirts", "jeans", "coats", "hoodies", "trousers", "kurta", "uniform", "baby dress"]
       }
     ];
 
@@ -128,11 +151,12 @@
         return;
       }
 
-      // Filter stores that contain the item
-      const filtered = alternatives.filter(store => store.items.includes(input));
+      const filtered = alternatives.filter(store =>
+        store.items.includes(input)
+      );
 
       if (filtered.length === 0) {
-        resultsDiv.innerHTML = "<p>No alternatives found for <strong>" + input + "</strong>. Try another item.</p>";
+        resultsDiv.innerHTML = `<p>No alternatives found for <strong>${input}</strong>. Try another item.</p>`;
         return;
       }
 
@@ -144,7 +168,7 @@
           <h3>${store.name}</h3>
           <p><strong>Type:</strong> ${store.type}</p>
           ${store.location ? `<p><strong>Location:</strong> ${store.location}</p>` : ''}
-          ${store.website ? `<p><strong>Website:</strong> <a href="${store.website}" target="_blank" rel="noopener noreferrer">${store.website}</a></p>` : ''}
+          ${store.website ? `<p><strong>Website:</strong> <a href="${store.website}" target="_blank">${store.website}</a></p>` : ''}
         `;
 
         resultsDiv.appendChild(card);
