@@ -70,8 +70,8 @@ Users can enter the name of a clothing item (e.g., jeans, jacket, t-shirt), and 
 
 ## Author
 
-Your Name (or Team Name)  
-Contact: your.email@example.com (optional)  
+MD REYAZUDDIN ANSARI
+reyazuddin05.03@gmail.com
 
 ---
 
