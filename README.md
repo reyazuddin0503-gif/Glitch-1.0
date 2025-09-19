@@ -1,3 +1,4 @@
+### Environment & Sustainability
 # Eco-Friendly Fashion Alternative Finder
 
 A clean, modern, and responsive web app that helps users find sustainable and eco-friendly alternatives for their favorite clothing items. It features product details, store locations, and embedded Google Maps to guide users to physical stores.
