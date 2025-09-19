@@ -1,292 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🌿 Fast Fashion Alternative Finder</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e6f0ea;
-      color: #333;
-      padding: 20px;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Eco-Friendly Fashion Alternative Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset and base styling */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #d0f0d0, #a0dca0);
+    color: #2c6e49;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header container */
+  header {
+    display: flex;
+    max-width: 1100px;
+    margin: 50px auto 20px;
+    background: rgba(255 255 255 / 0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  /* Left side */
+  .left-section {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .left-section h1 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+  }
+
+  .left-section p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+    color: #3a7a39;
+  }
+
+  /* Search bar */
+  .search-bar {
+    display: flex;
+    gap: 15px;
+    max-width: 500px;
+  }
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(44,110,73,0.3);
+    font-weight: 500;
+    color: #2c6e49;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .search-bar input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 6px 20px rgba(44,110,73,0.6);
+    transform: scale(1.03);
+  }
+  .search-bar button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #4caf50, #2c6e49);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(44,110,73,0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .search-bar button:hover {
+    background: linear-gradient(135deg, #2c6e49, #4caf50);
+    box-shadow: 0 8px 25px rgba(44,110,73,0.7);
+  }
+
+  /* Right side with image */
+  .right-section {
+    flex: 1.2;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') center center/cover no-repeat;
+  }
+
+  /* Results container */
+  #results {
+    max-width: 900px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+  }
+
+  .result-card {
+    background: white;
+    padding: 22px 25px;
+    margin-bottom: 20px;
+    border-left: 8px solid #4caf50;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    transition: transform 0.2s ease;
+  }
+  .result-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+
+  .result-card h3 {
+    margin: 0 0 8px;
+    color: #2c6e49;
+  }
+  .result-card small {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666;
+  }
+  .result-card p {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+  .item-price {
+    font-weight: 700;
+    color: #3a7a39;
+  }
+  a {
+    color: #2c6e49;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  iframe {
+    margin-top: 15px;
+    width: 100%;
+    height: 220px;
+    border: none;
+    border-radius: 12px;
+  }
+
+  /* Buy button style */
+  .buy-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin-top: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .buy-btn:hover {
+    background-color: #2c6e49;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    header {
+      flex-direction: column;
+      margin: 30px 15px 20px;
+      border-radius: 16px;
     }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
+    .right-section {
+      height: 280px;
+      border-radius: 16px 16px 0 0;
+    }
+    .left-section {
+      padding: 30px 25px;
       text-align: center;
     }
-    input[type="text"] {
-      width: 70%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #aaa;
-      box-sizing: border-box;
+    .search-bar {
+      flex-direction: column;
+      max-width: 100%;
+      gap: 15px;
     }
-    button {
-      padding: 10px 20px;
-      margin-left: 10px;
-      font-size: 16px;
-      border: none;
-      background-color: #2d8f2d;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #237023;
-    }
-    #results {
-      margin-top: 30px;
-      text-align: left;
-    }
-    .result-card {
-      background: white;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-left: 6px solid #2d8f2d;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    a {
-      color: #2d8f2d;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    iframe {
-      margin-top: 10px;
+    .search-bar input[type="text"],
+    .search-bar button {
       width: 100%;
-      height: 200px;
-      border: none;
-      border-radius: 6px;
+      flex: none;
     }
-    .item-price {
-      font-weight: bold;
-      margin: 5px 0;
+  }
+  @media (max-width: 600px) {
+    #results {
+      margin: 20px 10px 40px;
+      padding: 0 10px;
     }
-    .buttons-container {
-      margin-top: 10px;
-    }
-    .buy-btn {
-      background-color: #2d8f2d;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      margin-right: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .buy-btn:hover {
-      background-color: #237023;
-    }
-    @media(max-width: 600px) {
-      input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-      button {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌿 Fast Fashion Alternative Finder</h1>
-    <p>Enter any clothing item (e.g. jeans, kurta, hoodie, baby dress, bra, shirt, pant) to find eco-friendly alternatives!</p>
-    <input type="text" id="itemInput" placeholder="E.g. jeans, kurta, jacket, bra, baby dress, shirt, pant..." />
-    <button onclick="searchAlternatives()">Find Alternatives</button>
 
-    <div id="results"></div>
-  </div>
+<header>
+  <section class="left-section">
+    <h1>Welcome to Eco Fashion</h1>
+    <p>Find sustainable and eco-friendly alternatives for your favorite clothing items.</p>
+    <div class="search-bar">
+      <input
+        type="text"
+        id="itemInput"
+        placeholder="Enter clothing item (e.g. jeans, kurta)"
+        aria-label="Clothing item to search"
+      />
+      <button onclick="searchAlternatives()">Search</button>
+    </div>
+  </section>
+  <section class="right-section"></section>
+</header>
 
-  <script>
-    // Locations with corresponding Google Maps embed URLs (for demonstration)
-    const locationMaps = {
-      "Downtown": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9301279359553!2d-74.00601568459306!3d40.71277597933016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a31619e2263%3A0x6441d67a8207b4be!2sDowntown%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1695123456789!5m2!1sen!2sus",
-      "Campus Plaza": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.238123698942!2d-122.16834168467806!3d37.427474179825744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5d60f7749c3%3A0x8f6b29d26e5a6c3f!2sStanford%20University!5e0!3m2!1sen!2sus!4v1695123467890!5m2!1sen!2sus",
-      "East Side": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5085329750897!2d-73.97536398459118!3d40.732013879327376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af18b19351%3A0x736cbb805c4bc1e9!2sEast%20Village%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123478901!5m2!1sen!2sus",
-      "Green Street": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.210987641987!2d-74.01809608458917!3d40.70279167932774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a201d3d30d7%3A0x4a6c4b3b7e7d7f1f!2sGreen%20Street%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123489012!5m2!1sen!2sus",
-      "South Lane": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.7995268393267!2d-73.98765428459084!3d40.71644947932897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f1a2763cd5%3A0x83b24d5b7e9d1c8a!2sSouth%20Lane%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123490123!5m2!1sen!2sus",
-      "College Road": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.731548279623!2d-74.00594118459292!3d40.71309747932991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a2e42e6a98f%3A0x10e9d9a5f1b76584!2sCollege%20Road%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123501234!5m2!1sen!2sus",
-      "Old Town Market": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.221459679937!2d-74.00064568459388!3d40.71879637932971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a2951c7e3db%3A0xa1b826a2bb1e71a0!2sOld%20Town%20Market%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123512345!5m2!1sen!2sus"
-    };
+<div id="results"></div>
 
-    // Stores data with items, prices, and types
-    const alternatives = [
+<script>
+  // Trigger search on Enter key press
+  document.getElementById('itemInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') searchAlternatives();
+  });
+
+  // Data for maps by location name
+  const locationMaps = {
+    "Downtown": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9301279359553!2d-74.00601568459306!3d40.71277597933016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a31619e2263%3A0x6441d67a8207b4be!2sDowntown%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1695123456789!5m2!1sen!2sus",
+    "Campus Plaza": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.238123698942!2d-122.16834168467806!3d37.427474179825744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5d60f7749c3%3A0x8f6b29d26e5a6c3f!2sStanford%20University!5e0!3m2!1sen!2sus!4v1695123467890!5m2!1sen!2sus",
+    "East Side": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5085329750897!2d-73.97536398459118!3d40.732013879327376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af18b19351%3A0x736cbb805c4bc1e9!2sEast%20Village%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123478901!5m2!1sen!2sus",
+    "Green Street": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.210987641987!2d-74.01809608458917!3d40.70279167932774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a201d3d4f1d%3A0x21259c2909df994e!2sGreen%20Street%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123489012!5m2!1sen!2sus"
+  };
+
+  // Your existing searchAlternatives function (example with placeholder data)
+  function searchAlternatives() {
+    const input = document.getElementById('itemInput').value.trim();
+    if (!input) {
+      alert("Please enter a clothing item.");
+      return;
+    }
+
+    // Fake sample data for demonstration
+    const data = [
       {
-        name: "Green Threads Thrift",
-        type: "Thrift Store",
+        brand: "GreenWeave",
+        model: input + " Eco Edition",
+        price: "$89",
         location: "Downtown",
-        items: {
-          "jeans": 25,
-          "jackets": 40,
-          "shirts": 15,
-          "t-shirts": 10,
-          "hoodies": 30,
-          "skirts": 20,
-          "kurta": 22,
-          "baby dress": 18,
-          "school uniform": 35,
-          "pants": 20,
-          "shirt": 15
-        }
+        buyLink: "https://greenweave.example.com",
+        mapEmbed: locationMaps["Downtown"]
       },
       {
-        name: "Fix It Up Tailoring",
-        type: "Repair Shop",
+        brand: "NatureThreads",
+        model: input + " Organic",
+        price: "$120",
         location: "Campus Plaza",
-        items: {
-          "jeans": 20,
-          "coats": 35,
-          "dresses": 30,
-          "blouses": 25,
-          "pants": 18,
-          "blazers": 45,
-          "saree": 50,
-          "kids shorts": 15,
-          "shirts": 20,
-          "shirt": 20
-        }
+        buyLink: "https://naturethreads.example.com",
+        mapEmbed: locationMaps["Campus Plaza"]
       },
       {
-        name: "EverEthical",
-        type: "Ethical Brand",
+        brand: "PureCotton",
+        model: input + " Sustainable Line",
+        price: "$99",
         location: "East Side",
-        items: {
-          "jeans": 60,
-          "jackets": 80,
-          "shirts": 50,
-          "pant": 45,
-          "t-shirts": 35,
-          "hoodies": 70,
-          "kurta": 55,
-          "baby dress": 40,
-          "bra": 25,
-          "shirt": 50
-        }
-      },
-      {
-        name: "Nature's Nook",
-        type: "Organic Store",
-        location: "Green Street",
-        items: {
-          "shirts": 30,
-          "pants": 25,
-          "jackets": 60,
-          "kurta": 35,
-          "baby dress": 28,
-          "shirt": 30,
-          "pant": 25
-        }
-      },
-      {
-        name: "Stitch & Style",
-        type: "Custom Tailor",
-        location: "South Lane",
-        items: {
-          "shirt": 40,
-          "pant": 35,
-          "saree": 65,
-          "blazers": 55,
-          "jackets": 50,
-          "dresses": 45
-        }
-      },
-      {
-        name: "EcoWear Collective",
-        type: "Sustainable Brand",
-        location: "College Road",
-        items: {
-          "jeans": 55,
-          "shirts": 45,
-          "pant": 40,
-          "jackets": 70,
-          "kurta": 50,
-          "baby dress": 38,
-          "shirt": 45,
-          "pant": 40
-        }
-      },
-      {
-        name: "Vintage Value Market",
-        type: "Secondhand Market",
-        location: "Old Town Market",
-        items: {
-          "jeans": 22,
-          "shirts": 18,
-          "pants": 16,
-          "jackets": 30,
-          "baby dress": 15,
-          "shirt": 18,
-          "pant": 16
-        }
+        buyLink: "https://purecotton.example.com",
+        mapEmbed: locationMaps["East Side"]
       }
     ];
 
-    // Buy Now action (can be modified as per actual logic)
-    function buyNow(store, item, price) {
-      alert(`You chose to BUY NOW:\nItem: ${item}\nStore: ${store}\nPrice: $${price}`);
-    }
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = "";
 
-    // Buy Later action (e.g. save to wishlist or localStorage)
-    function buyLater(store, item, price) {
-      alert(`You chose to BUY LATER:\nItem: ${item}\nStore: ${store}\nPrice: $${price}`);
-      // Here you can add localStorage or backend logic
-    }
+    data.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'result-card';
 
-    function searchAlternatives() {
-      const input = document.getElementById('itemInput').value.trim().toLowerCase();
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.innerHTML = '';
+      card.innerHTML = `
+        <h3>${item.brand} - ${item.model}</h3>
+        <small>Location: ${item.location}</small>
+        <p class="item-price">Price: ${item.price}</p>
+        <div class="buttons-container">
+          <button class="buy-btn" onclick="window.open('${item.buyLink}', '_blank')">Buy</button>
+        </div>
+        <iframe src="${item.mapEmbed}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      `;
 
-      if (!input) {
-        resultsDiv.innerHTML = "<p>Please enter a clothing item to search.</p>";
-        return;
-      }
+      resultsDiv.appendChild(card);
+    });
+  }
+</script>
 
-      let foundAny = false;
-
-      alternatives.forEach(store => {
-        // Check if store has the item (keys can be shirt or shirts, pant or pants)
-        const itemKey = Object.keys(store.items).find(key => key.toLowerCase() === input || (key.toLowerCase() + 's') === input || (key.toLowerCase().slice(0, -1)) === input);
-        if (itemKey) {
-          foundAny = true;
-          const price = store.items[itemKey];
-
-          const card = document.createElement('div');
-          card.className = 'result-card';
-
-          card.innerHTML = `
-            <h3>${store.name} <small style="font-weight:normal; color:gray;">(${store.type})</small></h3>
-            <p><strong>Location:</strong> ${store.location}</p>
-            <p class="item-price">Price for <em>${input}</em>: $${price}</p>
-
-            <div class="buttons-container">
-              <button class="buy-btn" onclick="buyNow('${store.name}', '${input}', ${price})">Buy Now</button>
-              <button class="buy-btn" onclick="buyLater('${store.name}', '${input}', ${price})">Buy Later</button>
-            </div>
-
-            <iframe
-              src="${locationMaps[store.location]}"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          `;
-
-          resultsDiv.appendChild(card);
-        }
-      });
-
-      if (!foundAny) {
-        resultsDiv.innerHTML = `<p>No eco-friendly alternatives found for "<strong>${input}</strong>". Try another item!</p>`;
-      }
-    }
-  </script>
 </body>
 </html>
