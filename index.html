@@ -6,295 +6,211 @@
 <title>Eco-Friendly Fashion Alternative Finder</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
-  /* Reset and base styling */
-  * {
-    box-sizing: border-box;
-  }
+  /* Base reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #d0f0d0, #a0dca0);
+    background: #f4fdf6;
     color: #2c6e49;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    line-height: 1.6;
   }
 
-  /* Header container */
-  header {
+  /* Navbar */
+  nav {
+    background: #2c6e49;
+    color: white;
+    padding: 14px 40px;
     display: flex;
-    max-width: 1100px;
-    margin: 50px auto 20px;
-    background: rgba(255 255 255 / 0.85);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  /* Left side */
-  .left-section {
-    flex: 1;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .left-section h1 {
+  nav h2 {
     font-weight: 700;
-    font-size: 3.5rem;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
   }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  nav ul li {
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+  nav ul li:hover { opacity: 0.8; }
 
-  .left-section p {
+  /* Hero section */
+  header {
+    background: linear-gradient(rgba(44,110,73,0.7), rgba(44,110,73,0.7)),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  header p {
     font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 35px;
-    color: #3a7a39;
+    margin-bottom: 30px;
   }
 
   /* Search bar */
   .search-bar {
     display: flex;
+    justify-content: center;
     gap: 15px;
-    max-width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
   }
   .search-bar input[type="text"] {
     flex: 1;
     padding: 14px 20px;
     font-size: 1.1rem;
-    border-radius: 12px;
+    border-radius: 10px;
     border: none;
-    box-shadow: 0 4px 15px rgba(44,110,73,0.3);
-    font-weight: 500;
-    color: #2c6e49;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-  }
-  .search-bar input[type="text"]:focus {
-    outline: none;
-    box-shadow: 0 6px 20px rgba(44,110,73,0.6);
-    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   }
   .search-bar button {
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #4caf50, #2c6e49);
+    padding: 14px 25px;
     border: none;
-    border-radius: 12px;
-    font-weight: 700;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#4caf50,#2c6e49);
     color: white;
-    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(44,110,73,0.5);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s;
   }
   .search-bar button:hover {
-    background: linear-gradient(135deg, #2c6e49, #4caf50);
-    box-shadow: 0 8px 25px rgba(44,110,73,0.7);
+    background: linear-gradient(135deg,#2c6e49,#4caf50);
   }
 
-  /* Right side with image */
-  .right-section {
-    flex: 1.2;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') center center/cover no-repeat;
-  }
-
-  /* Results container */
+  /* Results */
   #results {
-    max-width: 900px;
-    margin: 40px auto 80px;
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 0 20px;
   }
-
   .result-card {
     background: white;
     padding: 22px 25px;
-    margin-bottom: 20px;
-    border-left: 8px solid #4caf50;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    border-radius: 14px;
-    transition: transform 0.2s ease;
+    margin-bottom: 25px;
+    border-left: 6px solid #4caf50;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .result-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
   }
-
   .result-card h3 {
-    margin: 0 0 8px;
-    color: #2c6e49;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
   }
-  .result-card small {
-    font-weight: 400;
-    font-size: 14px;
-    color: #666;
-  }
-  .result-card p {
-    margin: 8px 0;
-    font-size: 1rem;
-  }
-  .item-price {
-    font-weight: 700;
-    color: #3a7a39;
-  }
-  a {
-    color: #2c6e49;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  iframe {
-    margin-top: 15px;
-    width: 100%;
-    height: 220px;
-    border: none;
-    border-radius: 12px;
-  }
-
-  /* Buy button style */
+  .result-card small { color: #666; }
+  .item-price { font-weight: 700; color: #2c6e49; }
   .buy-btn {
-    background-color: #4caf50;
+    background: #2c6e49;
     color: white;
     border: none;
     padding: 10px 18px;
     margin-top: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
     transition: background-color 0.3s ease;
   }
-  .buy-btn:hover {
-    background-color: #2c6e49;
+  .buy-btn:hover { background: #4caf50; }
+
+  iframe {
+    margin-top: 15px;
+    width: 100%;
+    height: 220px;
+    border: none;
+    border-radius: 10px;
   }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    header {
-      flex-direction: column;
-      margin: 30px 15px 20px;
-      border-radius: 16px;
-    }
-    .right-section {
-      height: 280px;
-      border-radius: 16px 16px 0 0;
-    }
-    .left-section {
-      padding: 30px 25px;
-      text-align: center;
-    }
-    .search-bar {
-      flex-direction: column;
-      max-width: 100%;
-      gap: 15px;
-    }
-    .search-bar input[type="text"],
-    .search-bar button {
-      width: 100%;
-      flex: none;
-    }
-  }
-  @media (max-width: 600px) {
-    #results {
-      margin: 20px 10px 40px;
-      padding: 0 10px;
-    }
+  /* Footer */
+  footer {
+    background: #2c6e49;
+    color: white;
+    text-align: center;
+    padding: 18px 10px;
+    margin-top: 50px;
   }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
+<nav>
+  <h2>EcoFashion</h2>
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Tips</li>
+    <li>Contact</li>
+  </ul>
+</nav>
+
+<!-- Hero Section -->
 <header>
-  <section class="left-section">
-    <h1>Welcome to Eco Fashion</h1>
-    <p>Find sustainable and eco-friendly alternatives for your favorite clothing items.</p>
-    <div class="search-bar">
-      <input
-        type="text"
-        id="itemInput"
-        placeholder="Enter clothing item (e.g. jeans, kurta)"
-        aria-label="Clothing item to search"
-      />
-      <button onclick="searchAlternatives()">Search</button>
-    </div>
-  </section>
-  <section class="right-section"></section>
+  <h1>Welcome to Eco Fashion</h1>
+  <p>Find sustainable and eco-friendly alternatives for your favorite clothing items.</p>
+  <div class="search-bar">
+    <input type="text" id="itemInput" placeholder="Enter clothing item (e.g. jeans, kurta)" />
+    <button onclick="searchAlternatives()">Search</button>
+  </div>
 </header>
 
+<!-- Results -->
 <div id="results"></div>
 
+<!-- Footer -->
+<footer>
+  <p>♻️ Made with love for a greener planet | EcoFashion 2025</p>
+</footer>
+
 <script>
-  // Trigger search on Enter key press
   document.getElementById('itemInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') searchAlternatives();
   });
 
-  // Data for maps by location name
   const locationMaps = {
-    "Downtown": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9301279359553!2d-74.00601568459306!3d40.71277597933016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a31619e2263%3A0x6441d67a8207b4be!2sDowntown%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1695123456789!5m2!1sen!2sus",
-    "Campus Plaza": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.238123698942!2d-122.16834168467806!3d37.427474179825744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5d60f7749c3%3A0x8f6b29d26e5a6c3f!2sStanford%20University!5e0!3m2!1sen!2sus!4v1695123467890!5m2!1sen!2sus",
-    "East Side": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5085329750897!2d-73.97536398459118!3d40.732013879327376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af18b19351%3A0x736cbb805c4bc1e9!2sEast%20Village%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123478901!5m2!1sen!2sus",
-    "Green Street": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.210987641987!2d-74.01809608458917!3d40.70279167932774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a201d3d4f1d%3A0x21259c2909df994e!2sGreen%20Street%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1695123489012!5m2!1sen!2sus"
+    "Downtown": "https://www.google.com/maps/embed?...",
+    "Campus Plaza": "https://www.google.com/maps/embed?...",
+    "East Side": "https://www.google.com/maps/embed?..."
   };
 
-  // Your existing searchAlternatives function (example with placeholder data)
   function searchAlternatives() {
     const input = document.getElementById('itemInput').value.trim();
-    if (!input) {
-      alert("Please enter a clothing item.");
-      return;
-    }
+    if (!input) { alert("Please enter a clothing item."); return; }
 
-    // Fake sample data for demonstration
     const data = [
-      {
-        brand: "GreenWeave",
-        model: input + " Eco Edition",
-        price: "$89",
-        location: "Downtown",
-        buyLink: "https://greenweave.example.com",
-        mapEmbed: locationMaps["Downtown"]
-      },
-      {
-        brand: "NatureThreads",
-        model: input + " Organic",
-        price: "$120",
-        location: "Campus Plaza",
-        buyLink: "https://naturethreads.example.com",
-        mapEmbed: locationMaps["Campus Plaza"]
-      },
-      {
-        brand: "PureCotton",
-        model: input + " Sustainable Line",
-        price: "$99",
-        location: "East Side",
-        buyLink: "https://purecotton.example.com",
-        mapEmbed: locationMaps["East Side"]
-      }
+      { brand: "GreenWeave", model: input + " Eco Edition", price: "$89", location: "Downtown", buyLink: "#", mapEmbed: locationMaps["Downtown"] },
+      { brand: "NatureThreads", model: input + " Organic", price: "$120", location: "Campus Plaza", buyLink: "#", mapEmbed: locationMaps["Campus Plaza"] },
+      { brand: "PureCotton", model: input + " Sustainable Line", price: "$99", location: "East Side", buyLink: "#", mapEmbed: locationMaps["East Side"] }
     ];
 
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = "";
-
     data.forEach(item => {
       const card = document.createElement('div');
       card.className = 'result-card';
-
       card.innerHTML = `
         <h3>${item.brand} - ${item.model}</h3>
         <small>Location: ${item.location}</small>
         <p class="item-price">Price: ${item.price}</p>
-        <div class="buttons-container">
-          <button class="buy-btn" onclick="window.open('${item.buyLink}', '_blank')">Buy</button>
-        </div>
-        <iframe src="${item.mapEmbed}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <button class="buy-btn" onclick="window.open('${item.buyLink}', '_blank')">Buy</button>
+        <iframe src="${item.mapEmbed}" loading="lazy"></iframe>
       `;
-
       resultsDiv.appendChild(card);
     });
   }
 </script>
-
 </body>
 </html>
