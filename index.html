@@ -16,3 +16,143 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌿 Fast Fashion Alternative Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f5f1;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    input {
+      width: 70%;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #results {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .result-card {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid green;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    a {
+      color: green;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Fast Fashion Alternative Finder</h1>
+    <p>Type a clothing item (e.g. <em>jeans, jackets, t-shirts</em>) to find eco-friendly alternatives.</p>
+    
+    <input type="text" id="itemInput" placeholder="Enter a clothing item" />
+    <button onclick="searchAlternatives()">Find Alternatives</button>
+    
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const alternatives = [
+      {
+        name: "Green Threads Thrift",
+        type: "Thrift Store",
+        location: "Downtown",
+        items: ["jeans", "jackets", "shirts"]
+      },
+      {
+        name: "Fix It Up Tailoring",
+        type: "Repair Shop",
+        location: "Campus Plaza",
+        items: ["jeans", "coats", "dresses"]
+      },
+      {
+        name: "EverEthical",
+        type: "Ethical Brand",
+        website: "https://everethical.com",
+        items: ["t-shirts", "jeans", "hoodies"]
+      },
+      {
+        name: "EcoCloset",
+        type: "Thrift Store",
+        location: "East Side",
+        items: ["dresses", "skirts", "jackets"]
+      },
+      {
+        name: "Sew & Save",
+        type: "Repair Shop",
+        location: "Main Street",
+        items: ["pants", "coats", "shirts"]
+      },
+      {
+        name: "Organic Outfitters",
+        type: "Ethical Brand",
+        website: "https://organicoutfitters.com",
+        items: ["jeans", "t-shirts", "jackets"]
+      }
+    ];
+
+    function searchAlternatives() {
+      const input = document.getElementById('itemInput').value.trim().toLowerCase();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      if (input === '') {
+        resultsDiv.innerHTML = "<p>Please enter a clothing item to search.</p>";
+        return;
+      }
+
+      const filtered = alternatives.filter(store => store.items.includes(input));
+
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = "<p>No alternatives found. Try another item.</p>";
+        return;
+      }
+
+      filtered.forEach(store => {
+        const card = document.createElement('div');
+        card.className = 'result-card';
+
+        card.innerHTML = `
+          <h3>${store.name}</h3>
+          <p><strong>Type:</strong> ${store.type}</p>
+          ${store.location ? `<p><strong>Location:</strong> ${store.location}</p>` : ""}
+          ${store.website ? `<p><strong>Website:</strong> <a href="${store.website}" target="_blank">${store.website}</a></p>` : ""}
+        `;
+
+        resultsDiv.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
